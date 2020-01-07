@@ -25,6 +25,7 @@ class Adder {
 		'metakeywords',
 		'metadescription',
 		'google-site-verification',
+		'yandex-verification',
 	];
 
 	/** @var string[] Mapping of meta name to stored key. */
@@ -33,6 +34,7 @@ class Adder {
 		'keywords' => 'METAK',
 		'description' => 'METAD',
 		'google-site-verification' => 'METAGOOGLESITEVERIFICATION',
+		'yandex-verification' => 'METAYANDEXSITEVERIFICATION',
 	];
 
 	/**
@@ -93,6 +95,9 @@ class Adder {
 		$out = '';
 		foreach ( $params as $name => $param ) {
 			$commentTitle = false;
+			if ( $name === 'yandex-verification' ) {
+				$commentTitle = $this->storeKeys['yandex-verification'];
+			}
 			if ( $name === 'title' ) {
 				$commentTitle = $this->storeKeys['title'];
 			} elseif ( in_array( $name, [ 'metak', 'metakeywords' ] ) ) {
